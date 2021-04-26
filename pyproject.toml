@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyramid-helloworld"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["Guillaume Gauvrit <guillaume@gauvr.it>"]
 license = "BSD-derived (http://www.repoze.org/LICENSE.txt)"
@@ -8,7 +8,7 @@ include = ["development.yaml"]
 
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.7"
 pyramid = "^2"
 plaster-yaml = "^0.1.0"
 waitress = "^1.4.4"
