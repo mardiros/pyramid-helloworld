@@ -1,8 +1,16 @@
+celery: &celery
+  task_always_eager: true
+  imports:
+      - 'helloworld.tasks'
+
 app:
   "use": "egg:pyramid_helloworld"
   "pyramid.debug_notfound": true
   "pyramid.debug_routematch": true
   "pyramid.includes": []
+  "celery":
+    <<: *celery
+    "use": "egg:pyramid_helloworld"
 
 server:
   use: egg:waitress#main
