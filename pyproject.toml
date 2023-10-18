@@ -18,7 +18,7 @@ waitress = "^2.0.0"
 celery = ["celery", "celery-yaml"]
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
+pytest = "^7.4.2"
 
 [tool.poetry.plugins."paste.app_factory"]
 main = "pyramid_helloworld:main"
