@@ -8,11 +8,9 @@ include = ["development.yaml"]
 
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.8"
 celery = { version = "^5", optional = true}
-# See: https://pypi.org/project/backports.entry-points-selectable
-importlib_metadata = { version = ">=3.6", python = "<3.10" }
-plaster-yaml = "^0.2.0"
+plaster-yaml = ">0.1"
 pyramid = ">1.10, ^2.0"
 waitress = "^2.0.0"
 
