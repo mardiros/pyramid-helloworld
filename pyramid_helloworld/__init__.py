@@ -1,20 +1,10 @@
-import sys
-
-if sys.version_info < (3, 10):
-    import importlib_metadata
-
-    class importlib:
-        pass
-
-    setattr(importlib, "metadata", importlib_metadata)
-else:
-    import importlib.metadata
+from importlib import metadata
 
 from pyramid.config import Configurator
 from pyramid.response import Response
 from pyramid.router import Router
 
-__version__ = importlib.metadata.version("pyramid-helloworld")
+__version__ = metadata.version("pyramid-helloworld")
 
 from .backend import app
 from . import tasks
