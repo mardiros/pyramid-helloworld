@@ -10,7 +10,7 @@ include = ["development.yaml"]
 [tool.poetry.dependencies]
 python = "^3.8"
 celery = { version = "^5", optional = true}
-plaster-yaml = ">0.1"
+plaster-yaml = "^1.0.0"
 pyramid = ">1.10, ^2.0"
 waitress = "^2.0.0"
 
