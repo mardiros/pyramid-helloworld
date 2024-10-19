@@ -21,3 +21,20 @@ pserve:
   watch_files:
     - "*"
     - "%(here)s/**/*.py"
+
+logging:
+  version: 1
+  disable_existing_loggers: false
+  formatters:
+    console:
+      format: '%(asctime)s [%(levelname)s]: %(name)s - %(message)s'
+  handlers:
+    console:
+      class: logging.StreamHandler
+      level: INFO
+      stream: ext://sys.stdout
+      formatter: console
+  root:
+    level: DEBUG
+    handlers:
+      - console

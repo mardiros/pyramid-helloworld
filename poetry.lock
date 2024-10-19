@@ -343,13 +343,13 @@ testing = ["pytest", "pytest-cov"]
 
 [[package]]
 name = "plaster-yaml"
-version = "1.1.3"
+version = "2.0.1"
 description = "A plaster plugin to configure pyramid app with Yaml"
 optional = false
 python-versions = "<4.0.0,>=3.8.1"
 files = [
-    {file = "plaster_yaml-1.1.3-py3-none-any.whl", hash = "sha256:0db450cdd22ab023a2dbd017f6ca840d312f487de5ad390c02ec9584c2e1207d"},
-    {file = "plaster_yaml-1.1.3.tar.gz", hash = "sha256:1ec01098bd9e4a17f62301cedc4451c64841b043d4e6e42d1e5090e5fc09ffb8"},
+    {file = "plaster_yaml-2.0.1-py3-none-any.whl", hash = "sha256:3d8b28b68f03a40c4177184131227a05982d742f202985f79a5d97b1d1a49297"},
+    {file = "plaster_yaml-2.0.1.tar.gz", hash = "sha256:f0762cb7f20ae940ef88a9291dae4a46f83caff83fc7b1a74da11108abefaa59"},
 ]
 
 [package.dependencies]
@@ -752,4 +752,4 @@ celery = ["celery"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8.1"
-content-hash = "c56b2db5222f6ec46a4f1943ea9a9aa185c47056209e60146aad0bf1283e6272"
+content-hash = "1f68d00a92ae4fab18ad3b6d4d28730cd3f0863faff1666613f6588f9483992e"

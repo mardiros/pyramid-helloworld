@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyramid-helloworld"
-version = "1.2.0"
+version = "1.2.1"
 description = "Hello World web app using pyramid."
 authors = ["Guillaume Gauvrit <guillaume@gauvr.it>"]
 license = "BSD-derived"
@@ -10,7 +10,7 @@ include = ["development.yaml"]
 [tool.poetry.dependencies]
 python = "^3.8.1"
 celery = { version = "^5", optional = true}
-plaster-yaml = "^1.1.0"
+plaster-yaml = "^2.0.1"
 pyramid = ">1.10, ^2.0"
 waitress = "^2.0.0"
 
@@ -19,9 +19,6 @@ celery = ["celery", "celery-yaml"]
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.4.2"
-
-[tool.poetry.plugins."plaster.loader_factory"]
-"file+yaml" = "plaster_yaml:Loader"
 
 [tool.poetry.plugins."paste.app_factory"]
 main = "pyramid_helloworld:main"
