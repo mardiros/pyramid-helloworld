@@ -8,9 +8,9 @@ include = ["development.yaml"]
 
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.9"
 celery = { version = "^5", optional = true}
-plaster-yaml = "^1.0.0"
+plaster-yaml = "^1.1.0"
 pyramid = ">1.10, ^2.0"
 waitress = "^2.0.0"
 
@@ -25,9 +25,6 @@ main = "pyramid_helloworld:main"
 
 [tool.poetry.plugins."celery_yaml.app"]
 main = "pyramid_helloworld.backend:app"
-
-[tool.poetry.plugins."plaster.loader_factory"]
-"file+yaml" = "plaster_yaml:Loader"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
