@@ -1,0 +1,10 @@
+Dockerfile
+tests
+.venv
+*.egg-info
+*.pyc
+*.swp
+.vscode
+.pytest_cache
+dist
+__pycache__

@@ -8,7 +8,7 @@ include = ["development.yaml"]
 
 
 [tool.poetry.dependencies]
-python = "^3.8.1"
+python = "^3.9"
 celery = { version = "^5", optional = true}
 plaster-yaml = "^2.0.1"
 pyramid = ">1.10, ^2.0"
@@ -19,6 +19,14 @@ celery = ["celery", "celery-yaml"]
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.4.2"
+
+[tool.poetry.group.uwsgi]
+optional = true
+
+[tool.poetry.group.uwsgi.dependencies]
+plaster-yaml = "^2.0.2"
+plasted = "^0.2.0"
+
 
 [tool.poetry.plugins."paste.app_factory"]
 main = "pyramid_helloworld:main"
