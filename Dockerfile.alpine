@@ -1,0 +1,89 @@
+FROM alpine:3.20 AS build-env
+
+ENV PATH /usr/local/bin:$PATH
+ENV PYTHONPATH=/usr/local/lib/python3.12/site-packages:/usr/lib/python3.12/site-packages
+ENV LANG C.UTF-8
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV POETRY_VIRTUALENVS_CREATE=false
+
+RUN apk update && \
+    apk add --no-cache \
+    build-base \
+    gcc \
+    musl-dev \
+    libffi-dev \
+    python3-dev \
+    py3-pip \
+    poetry \
+    py3-poetry-plugin-export \
+    git \
+    curl
+
+WORKDIR /app
+
+COPY pyproject.toml /app/pyproject.toml
+COPY poetry.lock /app/poetry.lock
+
+# now we will use pip to install everything under /usr/local to prepare
+# the local environment, poetry looks not able to do it by itself.
+RUN poetry config warnings.export false && \
+    poetry export --with uwsgi --format  requirements.txt -o requirements.txt --without-hashes && \
+    pip install \
+    --force-reinstall  \
+    --no-cache-dir \
+    --no-deps \
+    --prefix=/usr/local \
+    -r requirements.txt
+
+COPY . /app
+
+# it stays don't write bytecode, but wheels contains byte codes.
+RUN find /usr/local/lib/python3.*/site-packages  -name "__pycache__" -exec rm -rf {} +
+
+FROM alpine:3.20
+
+ENV PATH /usr/local/bin:$PATH
+ENV LANG C.UTF-8
+ENV PYTHONDONTWRITEBYTECODE=1
+
+RUN apk update && \
+    apk add --no-cache \
+    python3 \
+    uwsgi \
+    uwsgi-python3 && \
+    addgroup -g 1000 app && \
+    adduser -DHu 1000 -G app app
+
+COPY --from=build-env /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
+COPY --from=build-env /usr/local/bin /usr/local/bin
+
+COPY --from=build-env /app /app
+WORKDIR /app
+
+# ENTRYPOINT ["/docker-entrypoint.sh"]
+
+USER 1000:1000
+ENV UWSGI_WORKERS 2
+ENV UWSGI_HARAKIRI 30
+ENV UWSGI_BUFFERSIZE 32768
+ENV UWSGI_LOGFORMAT '{"source": "uwsgi", "type": "request", "method": "%(method)", "status": "%(status)", "path": "%(uri)", "user_agent": "%(uagent)", "duration_in_ms": %(msecs), "referer": "%(referer)", "host": "%(host)", "time": %(time), "remote_ip": "%(var.HTTP_X_FORWARDED_FOR)"}'
+ENV UWSGI_WORKERS 2
+ENV UWSGI_EXTRAS ""
+
+ENV CONFIG "/app/development.yaml"
+
+ENV PYTHONPATH=/usr/local/lib/python3.12/site-packages:/app
+
+
+EXPOSE 6543
+CMD /usr/sbin/uwsgi \
+    --plugin=python3 \
+    -M \
+    --workers=$UWSGI_WORKERS \
+    --enable-threads \
+    --http-socket=0.0.0.0:6543 \
+    --buffer-size=$UWSGI_BUFFERSIZE \
+    --harakiri=$UWSGI_HARAKIRI \
+    --log-format="$UWSGI_LOGFORMAT" \
+    --module=plasted:app \
+    $UWSGI_EXTRAS
