@@ -27,7 +27,7 @@ jobs:
 
       - name: "Install"
         run: |
-          pip install dist/pyramid-helloworld-*.whl --force-reinstall
+          pip install dist/pyramid_helloworld-*.whl --force-reinstall
 
       - name: "Test sdist"
         run: |
