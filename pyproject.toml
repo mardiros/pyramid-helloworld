@@ -1,31 +1,32 @@
-[tool.poetry]
+[project]
 name = "pyramid-helloworld"
 version = "2.0.0"
 description = "Hello World web app using pyramid."
-authors = ["Guillaume Gauvrit <guillaume@gauvr.it>"]
+authors = [{ name = "Guillaume Gauvrit", email = "guillaume@gauvr.it" }]
 license = "BSD-derived"
-include = ["development.yaml"]
+requires-python = ">=3.8.1"
+readme = "README.md"
 
+dependencies = [
+    "plaster-yaml>=2.0.1",
+    "pyramid>=1.10, <3",
+    "waitress>=2.0.0,<3",
+]
 
-[tool.poetry.dependencies]
-python = "^3.8.1"
-celery = { version = "^5", optional = true}
-plaster-yaml = "^2.0.1"
-pyramid = ">1.10, ^2.0"
-waitress = "^2.0.0"
+[dependency-groups]
+celery = ["celery >= 5.2.7", "celery-yaml>=2.0.0"]
+dev = ["pytest>=7.4.2"]
 
-[tool.poetry.extras]
-celery = ["celery", "celery-yaml"]
+[tool.pdm.build]
+includes = ["src", "development.yaml", "development.json", "CHANGELOG.md"]
+excludes = ["tests"]
 
-[tool.poetry.dev-dependencies]
-pytest = "^7.4.2"
-
-[tool.poetry.plugins."paste.app_factory"]
+[project.entry-points."paste.app_factory"]
 main = "pyramid_helloworld:main"
 
-[tool.poetry.plugins."celery_yaml.app"]
+[project.entry-points."celery_yaml.app"]
 main = "pyramid_helloworld.backend:app"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
