@@ -1,3 +1,8 @@
+## 2.0.1 - Released on 2024-10-30
+
+* Use uv and pdm instead of poetry 
+
+
 ## 2.0.0 - Release on 2024-10-19
 
 * Drop python3.7
