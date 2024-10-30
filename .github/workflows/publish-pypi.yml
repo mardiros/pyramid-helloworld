@@ -33,6 +33,8 @@ jobs:
           merge-multiple: true
 
       - uses: pdm-project/setup-pdm@v4
+        with:
+          python-version: 3.12
 
       - name: Publish package distributions to PyPI
         run: pdm publish --no-build

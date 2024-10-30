@@ -1,4 +1,4 @@
-## 2.0.2 - Released on 2024-10-30
+## 2.0.3 - Released on 2024-10-30
 
 * Try to publish using Trusted Publisher 
 
