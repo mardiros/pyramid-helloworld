@@ -1,3 +1,8 @@
+## 2.0.2 - Released on 2024-10-30
+
+* Try to publish using Trusted Publisher 
+
+
 ## 2.0.1 - Released on 2024-10-30
 
 * Use uv and pdm instead of poetry 
