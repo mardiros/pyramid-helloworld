@@ -7,16 +7,16 @@ Run the app using yaml configuration
 
 
 ```
-poetry install
-poetry run pserve development.yaml
+uv sync
+uv run pserve development.yaml
 ```
 
 
 Run the app using json configuration
 
 ```
-poetry install
-poetry run pserve development.json
+uv sync
+uv run pserve development.json
 ```
 
 

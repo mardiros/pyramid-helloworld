@@ -8,7 +8,7 @@ lint:
     uv run ruff check .
 
 typecheck:
-    poetry run mypy src
+    uv run mypy src
 
 test: lint unittest
 
