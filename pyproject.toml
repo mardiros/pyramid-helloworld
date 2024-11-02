@@ -1,6 +1,6 @@
 [project]
 name = "pyramid-helloworld"
-version = "2.0.4"
+version = "2.0.5"
 description = "Hello World web app using pyramid."
 authors = [{ name = "Guillaume Gauvrit", email = "guillaume@gauvr.it" }]
 license = { text = "BSD-Derived" }
@@ -12,6 +12,14 @@ dependencies = [
     "pyramid>=1.10, <3",
     "waitress>=2.0.0,<3",
 ]
+
+[project.urls]
+Homepage = "https://github.com/mardiros/pyramid-helloworld"
+Documentation = "https://github.com/mardiros/pyramid-helloworld/blob/main/README.md"
+Repository = "https://github.com/mardiros/pyramid-helloworld.git"
+Issues = "https://github.com/mardiros/pyramid-helloworld/issues"
+Changelog = "https://github.com/mardiros/pyramid-helloworld/blob/main/CHANGELOG.md"
+
 
 [dependency-groups]
 celery = ["celery >= 5.2.7", "celery-yaml>=2.0.0"]

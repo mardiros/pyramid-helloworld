@@ -1,3 +1,7 @@
+## 2.0.5 - Released on 2024-11-01
+
+* Update README instructions
+
 ## 2.0.4 - Released on 2024-10-30
 
 * Try to publish using Trusted Publisher 
