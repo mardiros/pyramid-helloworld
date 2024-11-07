@@ -451,7 +451,7 @@ celery = [
     { name = "celery-yaml", specifier = ">=2.0.0" },
 ]
 dev = [
-    { name = "pytest", specifier = ">=7.4.2" },
+    { name = "pytest", specifier = ">=8.3.3,<9" },
     { name = "pytest-cov", specifier = ">=6.0.0,<7" },
 ]
 

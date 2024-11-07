@@ -23,7 +23,7 @@ Changelog = "https://github.com/mardiros/pyramid-helloworld/blob/main/CHANGELOG.
 
 [dependency-groups]
 celery = ["celery >= 5.2.7", "celery-yaml>=2.0.0"]
-dev = ["pytest>=7.4.2", "pytest-cov >=6.0.0,<7"]
+dev = ["pytest >=8.3.3,<9", "pytest-cov >=6.0.0,<7"]
 
 [tool.pdm.build]
 includes = ["src", "development.yaml", "development.json", "CHANGELOG.md"]
