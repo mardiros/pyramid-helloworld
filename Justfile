@@ -2,7 +2,13 @@ package := 'pyramid_helloworld'
 default_unittest_suite := 'tests'
 
 install:
+    uv sync --group dev --frozen
+
+update:
     uv sync --group dev
+
+upgrade:
+    uv sync --group dev --upgrade
 
 lint:
     uv run ruff check .
